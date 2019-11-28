@@ -1,0 +1,6 @@
+
+title New Note Creation SPA
+
+note over Browser: HTML is redrawn with the new note
+Browser->Server: HTTP POST /new_note_spa
+Server-->Browser: Response {"message":"note created"}

@@ -1,0 +1,13 @@
+title New Note Creation
+
+Browser->Server: HTTP POST /new_note (with data in body)
+Server-->Browser: HTTP Status code 302 with location /notes
+note over Browser:Browser reloads page /notes
+Browser->Server: HTTP GET /notes
+Server-->Browser: HTML page
+Browser->Server:HTTP GET /main.css
+Server-->Browser: main.css
+Browser->Server:HTTP GET /main.js
+Server-->Browser: main.js
+Browser->Server:HTTP GET /data.json
+Server-->Browser: data.json

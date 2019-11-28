@@ -1,0 +1,11 @@
+title Single Page App
+
+Browser->Server: HTTP GET /spa
+Server-->Browser: HTML Page
+Browser->Server: HTTP GET /main.css
+Server-->Browser: main.css
+Browser->Server: HTTP GET /spa.js
+Server-->Browser: spa.js
+note over Browser: spa.js is executed
+Browser->Server: spa.js initiates HTTP GET /data.json
+Server-->Browser: data.json
