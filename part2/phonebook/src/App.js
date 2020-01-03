@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import personService from './services/persons'
+
+const baseUrl = 'http://localhost:3001/persons'
 
 const Filter = (props) => {
   return (<div>filter by names:<input value={props.filterName} onChange={props.filterChanged} /></div>)
@@ -34,7 +37,7 @@ const App = () => {
 
 
   useEffect(() => {
-    axios.get("http://localhost:3001/persons").then(res => {
+    personService.get(baseUrl).then(res => {
       console.log(res);
       if (res.data) {
         setPersons(res.data);
@@ -48,7 +51,12 @@ const App = () => {
       alert(`${newName} is already in the phonebook`);
       return;
     }
-    setPersons(persons.concat({ name: newName, number: newNumber }));
+    personService.create(baseUrl, { 'name': newName, 'number': newNumber }).then(res => {
+      console.log(res);
+      console.log('saved to server');
+      setPersons(persons.concat({ name: newName, number: newNumber }));
+
+    });
   }
 
   const filterChanged = (event) => {
